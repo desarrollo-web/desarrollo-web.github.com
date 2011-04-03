@@ -1,0 +1,32 @@
+body{
+    color: #444;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 700px;
+    margin: 0 auto;
+}    
+
+.header{
+    border-bottom: 1px dotted #555;
+}
+
+em{
+    background-color: #FFF666;
+}
+
+a{
+    color: #06F;
+    text-decoration: none;
+}
+.info{
+    background-color: #AFA;
+    font-weight: bold;
+}
+
+.warn{
+    background-color: #FCC;
+    font-weight: bold;
+}
+
+.grade{
+    color: green;
+}

@@ -1,0 +1,22 @@
+---
+layout: base
+title: Desarrollo de aplicaciones web 
+---
+
+<h2>Presentaciones</h2>
+<ul>
+    {%for post in site.categories.presentaciones%}
+        <li class="post">{{post.date|date_to_string}}: 
+            <a href="{{post.url}}">{{post.title}}</a>
+        </li>
+    {%endfor%}
+</ul>
+
+<h2>Guías/Laboratorios</h2>
+<ul>
+    {%for post in site.categories.labs%}
+        <li class="post">{{post.date|date_to_string}}: 
+            <a href="{{post.url}}">{{post.title}}</a>
+        </li>
+    {%endfor%}
+</ul>
