@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Python para programadores</title>
+
+  <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+  <link rel="stylesheet" href="/css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="/js/jquery-print.js"></script>
+  <script type="text/javascript" src="/js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="/js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="/js/fg.menu.js"></script>
+  <script type="text/javascript" src="/js/showoff.js"></script>
+  <script type="text/javascript" src="/js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="/js/sh_main.min.js"></script>
+  <script type="text/javascript" src="/js/core.js"></script>
+  <script type="text/javascript" src="/js/showoffcore.js"></script>
+
+  <link type="text/css" href="/css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="/css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="/css/sh_style.css" rel="stylesheet" >
+
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="basics/overview/1">
+<h1>Python para programadores</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="basics/overview/2">
+<h2>Si no ten&#xE9;s python</h2>
+
+<ul>
+<li>Ac&#xE1; hay un <a href="http://shell.appspot.com/">int&#xE9;rprete</a></li>
+<li>Y ac&#xE1; un lugar donde <a href="http://codepad.org/">escribir y ver ejecutado c&#xF3;digo</a></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="basics/overview/3">
+<h1>&#xBF;De qu&#xE9; hay que hablar?</h1>
+
+<ul>
+<li>C&#xF3;mo ejecutar programas</li>
+<li>Primitivos y sintaxis</li>
+<li>Combinaci&#xF3;n/Abstracci&#xF3;n</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="basics/overview/4">
+<h2>Generalidades</h2>
+
+<ul>
+<li>Cuenta con un int&#xE9;rprete, que se ejecuta s&#xF3;lo
+escribiendo <code>python</code></li>
+<li>Para ejecutar un programa, s&#xF3;lo hay que escribir
+<code>python</code> seguido del nombre de archivo</li>
+<li>Es <em>totalmente</em> orientado a objetos</li>
+<li>No necesita tipos expl&#xED;citos, los <em>adivina</em></li>
+<li>Python est&#xE1; basado en <em>indentaci&#xF3;n</em>.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="basics/overview/5">
+<h2>Tipos primitivos</h2>
+
+<ul>
+<li>N&#xFA;meros: <code>1</code> (int), <code>666L</code> (long), <code>3.14</code> (float), <code>1 + 2j</code> (complex)</li>
+<li>Booleanos: <code>True</code>, <code>False</code>
+(cualquier cosa excepto 0, None y las secuencias vac&#xED;as es impl&#xED;citamente verdadera)</li>
+<li>Strings: <code>'sencillos'</code>, <code>"dobles"</code>, <code>"""triples"""</code>, <code>'''mas triples'''</code></li>
+<li>Nulidad: <code>None</code></li>
+<li>Secuencias: <code>[1,2,'a', True, False, [3,4,5]]</code> (listas), <code>(1, 2, 3, 'x', (None))</code> (tuplas)</li>
+<li>Colecciones: <code>{'a', 1, 'b': 2, 'c':"eso"}</code> (diccionarios), <code>set([1,2,3])</code> (conjuntos)</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="basics/overview/6">
+<h1>Operaciones</h1>
+
+<ul>
+<li>Las num&#xE9;ricas cl&#xE1;sicas, junto a <code>**</code> (exponenciaci&#xF3;n) y <code>//</code>(divisi&#xF3;n entera)</li>
+<li>Operaciones relacionales: <code>&lt;</code>,  <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>, <code>==</code></li>
+<li>Operaciones booleanas: <code>not</code>, <code>and</code>, <code>or</code></li>
+<li>Se importan cosas con <code>import x</code> o <code>from x import y,z,w</code> o <code>from x import *</code> o <code>from x import algo as y</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="basics/overview/7">
+<h2>Estructuras de control</h2>
+
+<ul>
+<li>Comentarios empiezan con <code>#</code></li>
+<li>Los bloques se identifican por dos puntos (<code>:</code>) e indentaci&#xF3;n</li>
+<li><code>if...else</code></li>
+<li><code>if...elif..else</code></li>
+<li><code>while</code></li>
+<li><code>for ... in</code></li>
+<li><code>try... except...else</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="basics/overview/8">
+<pre class="sh_python"><code>from datetime import datetime as dt
+ahora = dt.now
+dia = ahora().day
+meses = {1 : "Enero", 2: "Febrero", 3: "Marzo"}
+
+if dia &lt; 20:
+    while ahora().second % 5 :
+        print "%d no es m&#xFA;ltiplo de 5" % ahora().second
+elif dia == 20:
+    for i in range(1, ahora().month+1):
+        print "Pas&#xF3; el %d mes: %s " % (i, meses[i])
+else:
+    print "Algo as&#xED;", "es python", "esto es una tupla..."</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="basics/overview/9">
+<h2>Operaciones avanzadas de iterables y diccionarios</h2>
+
+<ul>
+<li>List slicing: <code>lista[inicio:fin_inclusivo:salto]</code></li>
+<li>Acceso a elementos (<em>existe el acceso negativo</em>): <code>l[indice], l[-indice]</code></li>
+<li>Operadores sobrecargados: <code>[0]*5 == [0,0,0,0,0]; [1]+[2,3] == [1,2,3]; 5 in [1,2,3] == False</code></li>
+<li>List comprehensions: <code>another_list = [exp for elem in list]</code>; <code>a = [exp for elem in list if cond]</code></li>
+<li>Los <em>strings se  comportan como listas</em></li>
+<li>Iteraci&#xF3;n en diccionarios: <code>for k,v in d.items()</code></li>
+<li>Pertenencia <code>k in d</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="basics/overview/10">
+<pre class="sh_python"><code>import calendar
+#Obtengamos los nombres de los dias:
+dias = [calendar.day_name[i] for i in range(7)]
+#Si estan en ingles, traduzcamoslos
+if 'Monday' in dias:
+    trad = dict(zip(dias, """Lunes Martes Miercoles
+                             Jueves Viernes Sabado
+                             Domingo""".split()))
+else:
+    trad = dict([(e,e) for e in dias]) #Lo mismo que zip...
+
+#Veamos que hay adentro:
+for dia, trans in trad.items():
+    print "%s se dice %s" % (dia, trans)
+
+print "El fin de semana", dias[4:7], dias[-3:]
+dias[5:7] = ["Dormir", "Ver Tele"]
+print "El verdadero fin de semana", dias[4:7]
+print "Yo trabajo estos dias", dias[:4]
+print "Los dias habiles impares", dias[0:5:2]
+print "La semana al reves", dias[::-1]</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="abstraction/functions/1">
+<h1>Medios de abstracci&#xF3;n</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/2">
+<ul>
+<li>En python, los archivos son <em>m&#xF3;dulos</em></li>
+<li>Cualquier cosa que pongamos ah&#xED; se puede importar</li>
+<li>Las funciones son como cualquier otro objeto</li>
+<li>Existen las <em>funciones anidadas</em></li>
+<li>Y funciones que reciben o devuelven funciones</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/3">
+<pre class="sh_python"><code>def fib(n):
+    a,b = 0,1
+    nums = []
+    while a &lt; n:
+        nums += [a,]
+        a, b = b, a+b
+    return nums
+print fib(2000)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/4">
+<ul>
+<li>Usamos <code>def</code> para crear una funci&#xF3;n</li>
+<li>Si no tiene retorno expl&#xED;cito, retornar&#xE1; <code>None</code></li>
+<li>No declaramos tipos de nada, es din&#xE1;mico</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/5">
+<pre class="sh_python"><code>def bubblesort(x, ascending=True, make_copy=False):
+    x = x[:] if make_copy else x
+    for i in range(len(x)):
+        for j in range(len(x)-1, i, -1):
+            if ascending:
+                if x[j-1] &gt; x[j]:
+                    x[j-1], x[j] = x[j], x[j-1]
+            else:
+                if x[j-1] &lt; x[j]:
+                    x[j-1], x[j] = x[j], x[j-1]
+
+    return x
+import random
+list= range(10)
+random.shuffle(list)
+print bubblesort(list) #la ordena ascendente y cambia
+random.shuffle(list)
+print bubblesort(list, False) #la ordena descendente y cambia
+print bubblesort(list, make_copy=True) #ascendente, no la cambia
+print bubblesort(make_copy=False, ascending=False, x=list)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/6">
+<ul>
+<li>Los par&#xE1;metros pueden tener valores por defecto, si no los mandamos, los tomar&#xE1;n</li>
+<li>Podemos alterar el orden de los par&#xE1;metros si los mandamos con <em>nombre</em></li>
+<li>Existen, entonces, dos tipos de par&#xE1;metros: <em>posicionales y nombrados</em></li>
+<li><em>Si hay par&#xE1;metros posicionales, tienen que ir primero</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/7">
+<pre class="sh_python"><code>def sum_nums(*nums):
+    acc = 0
+    for num in nums:
+        acc += num
+    return acc
+
+print sum_nums(1,2,3,4) #=&gt; 10
+l = range(11)
+print sum_nums(*l) #=&gt; 55</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/8">
+<pre class="sh_python"><code>def print_hist(**table):
+    for k, v in table.items():
+        print "%s: %s" % (k, '#'*v)
+
+print_hist(e=3, a=2)
+t = {'x': 10, 'y': 3}
+print_hist(**t)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/9">
+<pre class="sh_python"><code>def varargs(saludo, *args, **kwargs):
+    print saludo
+    if 'do_print' in kwargs and kwargs['do_print']:
+        for arg in args:
+            print arg
+
+varargs("hola") 
+varargs("hola", 1,2,3)
+varargs("mundo", 3,4,5, do_print=True)
+varargs("mundo", 3,4,5, do_print=False)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/10">
+<ul>
+<li>Podemos recibir <em>par&#xE1;metros variables</em></li>
+<li>Los posicionales vienen en una lista</li>
+<li>Los nombrados, en un diccionario</li>
+<li>Para convertir una lista normal en una lista de args y viceversa, <em>empacamos</em> con el operador <code>*</code></li>
+<li>Igual con par&#xE1;metros nombrados, s&#xF3;lo que usamos el operador <code>**</code></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="abstraction/functions/11">
+<pre class="sh_python"><code>def menor_que(a,b):
+    return a &lt; b
+def mayor_igual(a,b):
+    return a &gt;= b
+
+def quicksort(l, lt=menor_que, geq=mayor_igual):
+    if l == []: return []
+    else:
+        s, xs = l[0], l[1:]
+        return quicksort([e for e in xs if lt(e, s)], lt,geq)\
+               + [s]\
+               + quicksort([e for e in xs if geq(e, s)],lt,geq)
+
+import random
+list = range(10)
+random.shuffle(list)
+print quicksort(list)
+print list
+print quicksort(list, mayor_igual, menor_que)
+rand = random.randint
+#ordenar una lista de listas
+llist = [range(rand(1,5)) for e in range(1,5)]
+print quicksort(llist,
+                lt=lambda a,b: len(a) &lt; len(b),
+                geq= lambda a,b: len(a) &gt;= len(b))</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/12">
+<ul>
+<li>Podemos mandar funciones a otras funciones como par&#xE1;metros</li>
+<li><code>lambda</code> crea <em>funciones an&#xF3;nimas</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/13">
+<pre class="sh_python"><code>def combine(f,g,h):
+    def do_combination(x):
+        return f(g(h(x)))
+
+    return do_combination
+
+ua = combine(str.split,
+             str.title,
+             lambda s: s.replace('_',' '))
+print upper_alpha("a_veces_no_hay_espacio")</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/14">
+<pre class="sh_python"><code>def combine(f,g,h):
+    return lambda x: f(g(h(x)))
+
+ua= combine(str.split,
+            str.title,
+            lambda s: s.replace('_',' '))
+print upper_alpha("a_veces_no_hay_espacio")</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/15">
+<pre class="sh_python"><code>def partial(f, *partials):
+    def application(*a, **kw):
+        return f(*(partials + args), **kw)
+
+    return application
+
+def sumas(x,y,z):
+    return x+y+z
+
+print sumas(1,2,3)
+siempre_uno = partial(sumas, 1)
+print siempre_uno(2,3)
+siempre_uno_y_dos = partial(sumas, 1, 2)
+print siempre_uno_y_dos(3)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/16">
+<ul>
+<li>Funciones que retornan funciones permiten hacer c&#xF3;digo m&#xE1;s expresivo</li>
+<li>Nos podemos valer de funciones anidadas o de la forma especial <em>lambda</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/17">
+<pre class="sh_python"><code>class Punto(object):
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return "(%d, %d)" % (self.x, self.y)
+    def dist(self, other):
+        import math
+        return math.sqrt((other.x-self.x)**2 + \
+                         (other.y-self.y)**2)
+    def __add__(self, o):
+        return Punto(self.x+o.x, self.y+o.y)
+
+a = Punto(2,3)
+b = Punto()
+c = Punto(y=1)
+print b.dist(a)
+print c
+print a + b</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/18">
+<ul>
+<li>Las clases no tienen mucho de especial</li>
+<li>Herencia es con par&#xE9;ntesis despu&#xE9;s del nombre de la clase</li>
+<li>Instanciaci&#xF3;n es s&#xF3;lo una llamada al operador par&#xE9;ntesis (<code>__init__</code>)</li>
+<li><code>self</code> es como <code>this</code>: un par&#xE1;metro agregado por el entorno de ejecuci&#xF3;n</li>
+<li>Podemos <em>sobrecargar operadores</em></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/19">
+<pre class="sh_python"><code>
+def search(str, filename):
+    #el segundo parametro es el modo,
+    #r para leer, w para escribir, b para binario
+    #a es para agregar
+    file = open(filename, 'r') 
+    count = 1
+    for line in file.readlines():
+        if str.lower() in line.lower():
+            print "%d: %s" %(count, line)
+        count += 1
+    file.close()
+
+import sys
+if len(sys.argv) == 3:
+    search(sys.argv[1], sys.argv[2])</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/20">
+<h2>M&#xE1;s referencias</h2>
+
+<ul>
+<li><a href="http://docs.python.org/tutorial/index.html">Tutorial oficial</a></li>
+<li><a href="http://python.computersci.org/Main/TableOfContents">Python para programadores en java</a></li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/21">
+<h2>Libros recomendados</h2>
+
+<ul>
+<li><a href="http://learnpythonthehardway.org/index">Learn Python The Hard Way (pronto traducido a espa&#xF1;ol)</a></li>
+<li><a href="http://inventwithpython.com/">Invent your own computer games with python</a></li>
+<li><a href="http://mundogeek.net/tutorial-python/">Python para todos</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>
