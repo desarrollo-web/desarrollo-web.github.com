@@ -249,6 +249,7 @@ Pero ve, muy a su disgusto, que en la terminal aparece lo siguiente:
 
 En efecto, git le está diciendo que ambos tocaron ese archivo y le está pidiendo que lo revise. Luis abre el archivo con `vim` (porque otros editores de texto, como `gedit` le dan acidez y depresión) y se encuentra con algo así:
 
+{%highlight diff%}
     <<<<<<< HEAD
     get('/'){erb :index}
     eval %w[/hackernotes /codewar /mailmaniac].collect{
@@ -262,6 +263,7 @@ En efecto, git le está diciendo que ambos tocaron ese archivo y le está pidien
         erb params[:splat][0].to_sym
     end
     >>>>>>> 858397fb3cc403b39921d2bcdf445c9ecaed0b18
+{%endhighlight%}
 
 Como se ve, todo lo que está entre separadores etiquetado como `HEAD` es lo que Luis hizo. Y lo que está en la otra porción, lo que John Galt hizo. Luis acepta que el código de Galt es mejor, así que decide borrar la porción suya y dejar la de Galt. Para terminar, hace un `commit` para decirle a git que ya resolvió el conflicto y todo está bien otra vez.
 
