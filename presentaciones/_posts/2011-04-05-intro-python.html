@@ -1,3 +1,7 @@
+---
+title: Python para programadores
+---
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -8,7 +12,6 @@
 
   <link rel="stylesheet" href="/css/reset.css" type="text/css"/>
   <link rel="stylesheet" href="/css/style.css" type="text/css"/>
-  <link rel="stylesheet" href="/css/syntax.css" type="text/css"/>
   <link rel="stylesheet" href="/css/showoff.css" type="text/css"/>
 
   <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
@@ -21,7 +24,7 @@
   <script type="text/javascript" src="/js/fg.menu.js"></script>
   <script type="text/javascript" src="/js/showoff.js"></script>
   <script type="text/javascript" src="/js/jTypeWriter.js"> </script>
-  <script type="text/javascript" src=".js/sh_main.min.js"></script>
+  <script type="text/javascript" src="/js/sh_main.min.js"></script>
   <script type="text/javascript" src="/js/core.js"></script>
   <script type="text/javascript" src="/js/showoffcore.js"></script>
 
@@ -57,6 +60,11 @@
     <tr><td class="key">r</td><td>reload slides</td></tr>
     <tr><td class="key">z</td><td>toggle help (this)</td></tr>
   </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
 </div>
 
 <div id="preso">loading presentation...</div>
@@ -297,7 +305,20 @@ varargs("mundo", 3,4,5, do_print=False)</code></pre>
 </ul>
 
 </div>
-</div><div class="slide" data-transition="none"><div class="content code smaller" ref="abstraction/functions/11">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/11">
+<h1>Ojo con los par&#xE1;metros por defecto, sus lugares son asignados <strong>una vez</strong>, no en cada llamada</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/12">
+<pre class="sh_python"><code>def evil_fun(x, l=[]):
+    l.append(x)
+    return l
+
+evil_fun(3)
+evil_fun()
+evil_fun(4)
+evil_fun(5, [6])</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="abstraction/functions/13">
 <pre class="sh_python"><code>def menor_que(a,b):
     return a &lt; b
 def mayor_igual(a,b):
@@ -324,14 +345,14 @@ print quicksort(llist,
                 lt=lambda a,b: len(a) &lt; len(b),
                 geq= lambda a,b: len(a) &gt;= len(b))</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/12">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/14">
 <ul>
 <li>Podemos mandar funciones a otras funciones como par&#xE1;metros</li>
 <li><code>lambda</code> crea <em>funciones an&#xF3;nimas</em></li>
 </ul>
 
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/13">
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/15">
 <pre class="sh_python"><code>def combine(f,g,h):
     def do_combination(x):
         return f(g(h(x)))
@@ -343,7 +364,7 @@ ua = combine(str.split,
              lambda s: s.replace('_',' '))
 print upper_alpha("a_veces_no_hay_espacio")</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/14">
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/16">
 <pre class="sh_python"><code>def combine(f,g,h):
     return lambda x: f(g(h(x)))
 
@@ -352,7 +373,7 @@ ua= combine(str.split,
             lambda s: s.replace('_',' '))
 print upper_alpha("a_veces_no_hay_espacio")</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/15">
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/17">
 <pre class="sh_python"><code>def partial(f, *partials):
     def application(*a, **kw):
         return f(*(partials + args), **kw)
@@ -368,14 +389,59 @@ print siempre_uno(2,3)
 siempre_uno_y_dos = partial(sumas, 1, 2)
 print siempre_uno_y_dos(3)</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/16">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/18">
 <ul>
 <li>Funciones que retornan funciones permiten hacer c&#xF3;digo m&#xE1;s expresivo</li>
 <li>Nos podemos valer de funciones anidadas o de la forma especial <em>lambda</em></li>
+<li>El uso m&#xE1;s com&#xFA;n de las funciones de orden superior es el patr&#xF3;n decorador:
+una funci&#xF3;n "plantilla" que modifica a otras y toma su lugar</li>
 </ul>
 
 </div>
-</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/17">
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/19">
+<pre class="sh_python"><code>import json
+
+def json_fun(f):
+    def wrapper(json_string, *args, **kwargs):
+        python_object = json.loads(json_string)
+        result = f(python_object, *args, **kwargs) 
+        return json.dumps(result)
+    return wrapper</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/20">
+<pre class="sh_python"><code>def foo(arg):
+    assert isinstance(arg, dict)
+    arg.update({'bar': 42})
+    return arg
+
+foo = json_fun(foo)</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code" ref="abstraction/functions/21">
+<pre class="sh_python"><code>@json_fun
+def foo(arg):
+    assert isinstance(arg, dict)
+    arg.update({'bar': 42})
+    return arg</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/22">
+<pre class="sh_python"><code>import json, pickle
+def serialize(format="json"):
+    def decorator(f):
+        def wrapper(*args, **kwargs):
+            result = f(*args, **kwargs)
+            if format == 'json':
+                return json.dumps(result)
+            elif format == 'pickle':
+                return pickle.dumps(result)
+            else:
+                throw Exception("Invalid format")
+        return wrapper
+    return decorator
+
+@serialize()
+def fun(): return {'foo': 'bar'}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/23">
 <pre class="sh_python"><code>class Punto(object):
     def __init__(self, x=0, y=0):
         self.x = x
@@ -396,7 +462,7 @@ print b.dist(a)
 print c
 print a + b</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/18">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/24">
 <ul>
 <li>Las clases no tienen mucho de especial</li>
 <li>Herencia es con par&#xE9;ntesis despu&#xE9;s del nombre de la clase</li>
@@ -406,7 +472,7 @@ print a + b</code></pre>
 </ul>
 
 </div>
-</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/19">
+</div><div class="slide" data-transition="none"><div class="content code small" ref="abstraction/functions/25">
 <pre class="sh_python"><code>
 def search(str, filename):
     #el segundo parametro es el modo,
@@ -424,16 +490,17 @@ import sys
 if len(sys.argv) == 3:
     search(sys.argv[1], sys.argv[2])</code></pre>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/20">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/26">
 <h2>M&#xE1;s referencias</h2>
 
 <ul>
 <li><a href="http://docs.python.org/tutorial/index.html">Tutorial oficial</a></li>
 <li><a href="http://python.computersci.org/Main/TableOfContents">Python para programadores en java</a></li>
+<li><a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/presentation.html">Idiomatic Python</a></li>
 </ul>
 
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/21">
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="abstraction/functions/27">
 <h2>Libros recomendados</h2>
 
 <ul>
