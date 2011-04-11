@@ -6,6 +6,6 @@
             {"section":"rest"},
             {"section":"wsgi"},
             {"section":"mvc"},
-            {"section":"django"},
+            {"section":"django"}
         ]
 }

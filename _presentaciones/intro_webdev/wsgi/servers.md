@@ -19,24 +19,62 @@
 * WSGI: Interfaz Estándar de Servidor Web
 * Una convención para escribir web-apps en python
 * Todo lo demás funciona sobre ésta
+* Intermediario: llena "entorno" y delega control a "controladores"
 
 !SLIDE code small
 
     @@@python
-
-    def application(environ, start_response):
-      text = 'Hola Mundo!'
-      start_response(
+    def application(environ, #entorno
+                    response_callback) #constructor de respuestas
+        text = 'Hola Mundo!\n'
+        response_callback(
               "200 OK",
               [('Content-Type', 'text/plain'),
                ('Content-Length', str(len(text)))]
               )
-      return [text]
+        return [text] 
 
-    from paste.httpserver import serve
-    serve(application)
+    from wsgiref.simple_server import make_server
+
+    daemon = make_server('127.0.0.1', 8000, application)
+
+    daemon.handle_request()
+
+!SLIDE bullets
+
+##El estándar WSGI
+
+* Va a llamar a una función que reciba un *entorno* y un *constructor de respuestas*
+* Ésta debe devolver un iterable como su cuerpo
 
 
+!SLIDE bullets
+##Middleware
+
+* Software que manipula solicitudes o respuesta antes de que lleguen a nuestra aplicación
+* Puede haber varias capas de middleware
+* Condición: tiene que ser `callable`
+* ¿Para qué sirve? Autenticación, optimización, validación, etc.
+* Los frameworks suelen tener una abstracción para eso
+
+!SLIDE code small
+
+    @@@python
+    class ReverseMiddleware:
+        def __init__(self, app):
+            self.wrapped_app = app
+
+        def __call__(self, environ, start_response):
+            for data in self.wrapped_app(environ,
+                                start_response):
+                return data[::-1]
+
+    
+    from wsgiref.simple_server import make_server
+    daemon = make_server('127.0.0.1'
+                         , 8000
+                         , ReverseMiddleware(application))
+    daemon.handle_request()
 
 !SLIDE bullets
 
@@ -68,4 +106,9 @@
     from paste.httpserver import serve
     serve(app)
 
+!SLIDE bullets
 
+##Referencias
+
+* [Web services in python](http://k0s.org/mozilla/craft/http.html)
+* [Learn WSGI](http://wsgi.org/wsgi/Learn_WSGI)
