@@ -1,0 +1,11 @@
+{ 
+    "name": "Introducción al desarrollo web",
+    "sections": 
+        [ 
+            {"section":"http"},
+            {"section":"rest"},
+            {"section":"wsgi"},
+            {"section":"mvc"},
+            {"section":"django"},
+        ]
+}

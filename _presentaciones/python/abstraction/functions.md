@@ -1,6 +1,6 @@
 !SLIDE 
 
-#Medios de abstracción
+#Medios de abstracción: funciones
 
 !SLIDE bullets
 
@@ -314,6 +314,8 @@
 !SLIDE bullets
 ##Libros recomendados
 
+* [How to think like a computer scientist](http://openbookproject.net/thinkCSpy/)
 * [Learn Python The Hard Way (pronto traducido a español)](http://learnpythonthehardway.org/index)
 * [Invent your own computer games with python](http://inventwithpython.com/)
 * [Python para todos](http://mundogeek.net/tutorial-python/)
+* [A byte of python](http://www.swaroopch.com/notes/Python)
